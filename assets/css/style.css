@@ -1,0 +1,524 @@
+#mailster_live{
+	display: inherit;
+}
+
+#mailster-mb-live.postbox .inside{
+	padding: 0;
+	margin: 0;
+}
+
+body.mailster-oveflow-hidden{
+	overflow: hidden;
+}
+#poststuff #mailster_live .inside {
+	margin: 0;
+	padding: 0;
+}
+#poststuff #mailster_live.fullscreen .inside{
+	position: fixed;
+	left: 0;
+	z-index: 10000;
+	top: 28px;
+	right: 0;
+	bottom: 0;
+}
+#poststuff #mailster_live.paused.fullscreen .inside{
+	left: 1px;
+	top: 29px;
+	right: 1px;
+	bottom: 1px;
+}
+#poststuff #mailster_live.fullscreen .inside .mailster_live_wrap{
+	height: 100% !important;
+}
+.mailster_live_paused{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #f33;
+	color: #fff;
+	z-index: 10;
+	padding: 2px 5px;
+	font-size: 10px;
+	text-transform: uppercase;
+	display: none;
+}
+#mailster_live.paused .mailster_live_paused{
+	display: block;
+}
+#mailster_live .mailster_live_wrap{
+	clear: both;
+	position: relative;
+}
+#mailster_live.paused .mailster_live_wrap{
+	box-shadow: 0px 0px 1px 1px rgba(255, 0, 0, 0.6);
+}
+.mailster_infowindow{
+	width: 252px;
+	height:60px;
+	border: 1px solid #aaa;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	padding: 2px;
+	background-color: #F8F8F8;
+}
+.mailster_infowindow img{
+	float: left;
+	margin-right: 10px;
+}
+.mailster_infowindow strong{
+	font-weight: normal;
+	text-transform: uppercase;
+	font-size: 10px;
+	padding-top: 4px;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 15px;
+	width: 180px;
+}
+.mailster_infowindow span{
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 15px;
+	width: 170px;
+}
+.mailster_live_collapse{
+	position: absolute;
+	bottom: 12px;
+	right: 20px;
+	color: #aaa;
+	z-index: 2;
+}
+ .expanded .mailster_live_collapse{
+	right: 43px;
+}
+.mailster_live_collapse-button.button-secondary{
+	position: relative;
+	-webkit-border-radius: 50%;
+	border-radius:50%;
+	vertical-align: middle;
+	width: 28px;
+	height: 28px;
+	display: inline-block;
+}
+.mailster-dashboard .mailster-icon.mailster_live_collapse-button:before{
+	 content: '\e808';
+	 margin-left: -2px;
+	 font-size: 11px;
+	 float: none;
+	 transform: translateY(-6px);
+}
+.mailster-dashboard .expanded .mailster-icon.mailster_live_collapse-button:before{
+	 margin-left: -3px;
+	 content: '\e807';
+}
+.mailster_live_collapse-button.button-secondary:hover{
+	border-color: #aaa;
+}
+.mailster_live_collapse-label{
+	vertical-align: middle;
+}
+.mailster_toggle_fullscreen{
+	position: absolute;
+	right: 7px;
+	z-index: 1;
+	top: 5px;
+	font-size: 10px;
+	text-decoration: none;
+	background-image: url(/wp-includes/images/wpicons.png);
+	background-position: -239px -20px;
+	width: 22px;
+	height: 20px;
+	display: none;
+}
+#mailster_live:hover .mailster_toggle_fullscreen, .touch #mailster_live .mailster_toggle_fullscreen{
+	display: block;
+}
+.mailster_toggle_fullscreen:hover{
+	background-position: -239px 0;
+}
+.mailster_live_map_wrap{
+	height:100%;
+	float: left;
+	position: absolute;
+	right: 0;
+	margin-right: 300px;
+	left: 0;
+	background-color: #F2F2F2;
+	z-index: 1;
+
+}
+.mailster_live_wrap.expanded .mailster_live_map_wrap{
+	margin-right: 0px;
+}
+.mailster_live_wrap.expanded .mailster_live_collapse-label{
+	display: none;
+}
+.mailster_live_map{
+	padding-right: 300px;
+	height:100%;
+	position: relative;
+}
+.mailster_live_activity_wrap{
+	width:300px;
+	height:100%;
+	float: right;
+	position: relative;
+	overflow: hidden;
+	background-color: #F8F8F8;
+}
+.mailster_live_activity{
+	width:600px;
+	height:100%;
+	position: absolute;
+	left: 0;
+}
+.mailster_live_activity header div{
+	-webkit-transition:border .25s ease;
+	-moz-transition:border .25s ease;
+	-ms-transition:border .25s ease;
+	-o-transition:,border .25s ease;
+	transition:border .25s ease;
+	cursor: pointer;
+}
+.mailster_live_activity header div:hover{
+	border-bottom-width: 4px;
+}
+.mailster_live_activity.active-opens header div{
+	opacity: 0.4;
+}
+.mailster_live_activity.active-opens header div.mailster_live_total_opens{
+	opacity:inherit;
+}
+.mailster_live_activity.active-opens ul.mailster_live_activities li{
+	display:none !important;
+}
+.mailster_live_activity.active-opens ul.mailster_live_activities li.mailster_live_type_2{
+	display:inherit !important;
+}
+
+.mailster_live_activity.active-clicks header div{
+	opacity: 0.4;
+}
+.mailster_live_activity.active-clicks header div.mailster_live_total_clicks{
+	opacity:inherit;
+}
+.mailster_live_activity.active-clicks ul.mailster_live_activities li{
+	display:none !important;
+}
+.mailster_live_activity.active-clicks ul.mailster_live_activities li.mailster_live_type_3{
+	display:inherit !important;
+}
+
+.mailster_live_activity.active-unsubscribes header div{
+	opacity: 0.4;
+}
+.mailster_live_activity.active-unsubscribes header div.mailster_live_total_unsubscribes{
+	opacity:inherit;
+}
+.mailster_live_activity.active-unsubscribes ul.mailster_live_activities li{
+	display:none !important;
+}
+.mailster_live_activity.active-unsubscribes ul.mailster_live_activities li.mailster_live_type_4{
+	display:inherit !important;
+}
+
+.mailster_live_activity.active-others header div{
+	opacity: 0.4;
+}
+.mailster_live_activity.active-others header div.mailster_live_total_others{
+	opacity:inherit;
+}
+.mailster_live_activity.active-others ul.mailster_live_activities li{
+	display:none !important;
+}
+.mailster_live_activity.active-others ul.mailster_live_activities li.mailster_live_type_other{
+	display:inherit !important;
+}
+
+.mailster_live_totals{
+	overflow: hidden;
+	clear: both;
+	float: none;
+	margin: 15px 5px 5px;
+	width: 300px;
+}
+.mailster_live_totals div{
+	float: left;
+	width: 23%;
+	height: 61px;
+	margin-left: 1%;
+	border-bottom: 2px solid #D3D6DB;
+	text-align: right;
+	padding: 3px;
+	font-size: 10px;
+	color: #aaa;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition:width .25s ease-in-out, display .25s ease-in-out;
+	-moz-transition:width .25s ease-in-out, display .25s ease-in-out;
+	-ms-transition:width .25s ease-in-out, display .25s ease-in-out;
+	-o-transition:width .25s ease-in-out, display .25s ease-in-out;
+	transition:width .25s ease-in-out, display .25s ease-in-out;
+}
+.mailster_live_totals.count_1 div{
+	width: 96%;
+}
+.mailster_live_totals.count_2 div{
+	width: 47%;
+}
+.mailster_live_totals.count_3 div{
+	width: 31%;
+}
+.mailster_live_totals.count_4 div{
+	width: 23%;
+}
+.mailster_live_totals div span{
+	color: #333;
+	font-size: 22px;
+	display: block;
+	padding-top: 21px;
+}
+.mailster_live_totals div.mailster_live_total_opens{
+	border-bottom-color: #6ED421;
+}
+.mailster_live_totals div.mailster_live_total_clicks{
+	border-bottom-color: #2189D4;
+}
+.mailster_live_totals div.mailster_live_total_unsubscribes{
+	border-bottom-color: #D54E21;
+}
+.mailster_live_totals div.mailster_live_total_others{
+	border-bottom-color: #D4C521;
+}
+.mailster_live_activity ul{
+	margin: 0;
+	overflow: auto;
+	width:296px;
+	float: left;
+	margin-left: 4px;
+	border-top: 1px solid #D3D6DB;
+	border-bottom: 1px solid #D3D6DB;
+	background: #F9F9F9;
+	bottom: 50px;
+	position: absolute;
+	top: 80px;
+	padding:0;
+}
+.mailster_live_activity.noaction ul:before{
+	content: '\f328';
+	font: normal 120px/1 'dashicons';
+	text-align: center;
+	margin: 0 auto;
+	display: block;
+	color:#999;
+	margin-top:30%;
+}
+
+.mailster_live_activity li{
+	overflow: hidden;
+	position: relative;
+	padding: 5px 5px 0;
+	display: block;
+	cursor: pointer;
+	-webkit-transition:border-left-width .25s ease,border .25s ease,padding-right .25s ease;
+	-moz-transition:border-left-width .25s ease,border .25s ease,padding-right .25s ease;
+	-ms-transition:border-left-width .25s ease,border .25s ease,padding-right .25s ease;
+	-o-transition:border-left-width .25s ease,border .25s ease,padding-right .25s ease;
+	transition:border-left-width .25s ease,border .25s ease,padding-right .25s ease;
+	margin: 2px 3px;
+	border: 1px solid #F1F1F1;
+	border-left-width: 2px;
+	background: #FFF;
+}
+.mailster_live_activity li:hover {
+	padding-right: 3px;
+	border-left-width: 4px;
+}
+
+.mailster_live_activity .mailster_live_activities li:hover {
+	background-color: #F1F1F1;
+}
+.mailster_live_activity li.mailster_live_type_2{
+	border-left-color: #6ED421;
+}
+.mailster_live_activity li.mailster_live_type_3{
+	border-left-color: #2189D4;
+}
+.mailster_live_activity li.mailster_live_type_4{
+	border-left-color: #D54E21;
+}
+.mailster_live_activity li.mailster_live_type_other{
+	border-left-color: #D4C521;
+}
+
+.mailster_live_back{
+	cursor: pointer;
+}
+.mailster_live_activity li h4{
+	font-size: 14px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font-weight: 300;
+	margin: 0;
+	height: 17px;
+	width: 72%;
+}
+.mailster_live_activity .mailster_live_avatar{
+	width:40px;
+	height:40px;
+	float: left;
+	margin-right: 10px;
+	margin-top: 1px;
+	padding: 2px;
+	border: 1px solid #D3D6DB;
+	background-color: #FFF;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 40px 40px;
+}
+.mailster_live_activity .mailster_live_userdetail .mailster_live_avatar{
+	float: right;
+	margin-top: 6px;
+	margin-right: 0px;
+	padding: 3px;
+	width:60px;
+	height:60px;
+	background-size: 60px 60px;
+}
+.mailster_live_activity .mailster_live_userdetail li{
+	cursor: auto;
+}
+.mailster_live_activity .mailster_live_userdetail li:hover {
+	padding-right: 5px;
+	border-left-width: 4px;
+}
+.mailster_live_activity .mailster_live_userdetail li .mailster_live_avatar{
+	display: none;
+}
+.mailster_live_activity .mailster_live_userdetail li .mailster_live_name{
+	display: none;
+}
+.mailster_live_activity .mailster_live_userdetail h4{
+	padding-top: 2px;
+}
+.mailster_live_activity li .mailster_live_name{
+	font-weight: 100;
+	font-size: 11px;
+}
+.mailster_live_activity li .mailster_live_timestamp{
+	font-weight: 100;
+	font-size: 11px;
+	color: #aaa;
+	float: right;
+}
+
+
+.mailster_live_activity li .mailster_live_action_body{
+	color: #888;
+	display: none;
+	font-weight: 100;
+}
+.mailster_live_activity .mailster_live_userdetail li .mailster_live_action_body{
+	padding-left: 0;
+	padding-top: 6px;
+	display: block;
+}
+.mailster_live_activity .mailster_live_userdetail{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 300px;
+	height: 100%;
+	float: right;
+	padding: 10px 6px;
+	margin-top: -74px;
+}
+.mailster_live_activity .mailster_live_userdetail header{
+	padding: 10px 4px;
+}
+.mailster_live_activity .mailster_live_userdetail ul{
+	top:110px;
+	width: 288px;
+	margin-left: 0;
+}
+.mailster_live_activity .mailster_live_userdetail h4.mailster_live_username{
+	font-size: 20px;
+	font-weight: normal;
+	margin: 0.9em 0 0;
+	line-height: 19px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 22px;
+	width: 208px;
+}
+.mailster_live_activity .mailster_live_userdetail h5.mailster_live_email{
+	font-weight: 100;
+	font-size: 11px;
+	margin: 0;
+	padding-bottom: 12px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.mailster_live_activity .mailster_live_userdetail .mailster_live_avatar:hover{
+	border: 1px solid #B1B4B9;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.mailster_live_info{
+	position: relative;
+	z-index: 2;
+	width: 260px;
+	padding: 260px 14px 0 26px;
+	display: none;
+	margin-top: 40px;
+}
+
+.noaction .mailster_live_info{
+	display: block;
+}
+.mailster_live_info.loggedout{
+	display: block;
+	padding-top:20%;
+}
+
+.mailster_live_info a{
+	text-decoration: none;
+}
+
+.mailster_live_info h4{
+	font-size: 12px;
+	font-weight: 100;
+	line-height: 1.4em;
+	text-align: center;
+	opacity: 0.8;
+}
+.mailster_live_no_api_key{
+	font-size: 20px;
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 33%;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+	only screen and (-o-min-device-pixel-ratio: 32),
+	only screen and (min--moz-device-pixel-ratio: 1.5),
+	only screen and (min-device-pixel-ratio: 1.5) {
+
+	.mailster_toggle_fullscreen{
+		background-image: url(/wp-includes/images/wpicons-2x.png);
+		background-size: 560px 40px;
+	}
+
+
+}
+
+
