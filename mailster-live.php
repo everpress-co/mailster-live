@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Mailster Live!
-Plugin URI: http://rxa.li/mailster?utm_campaign=wporg&utm_source=Mailster+Live
+Plugin URI: https://mailster.co/?utm_campaign=wporg&utm_source=Mailster+Live
 Description: see who opens your newsletter campaigns in real time
 Version: 1.0
-Author: revaxarts.com
-Author URI: https://mailster.co
+Author: EverPress
+Author URI: https://everpress.io
 Text Domain: mailster-live
 License: GPLv2 or later
 */
@@ -24,8 +24,8 @@ class MailsterLive {
 		$this->plugin_dir = dirname( __FILE__ );
 		$this->plugin_url = plugins_url() . '/' . basename( $this->plugin_dir );
 
-		register_activation_hook( $this->plugin_dir . '/live.php', array( &$this, 'activate' ) );
-		register_deactivation_hook( $this->plugin_dir . '/live.php', array( &$this, 'deactivate' ) );
+		register_activation_hook( $this->plugin_dir . '/mailster-live.php', array( &$this, 'activate' ) );
+		register_deactivation_hook( $this->plugin_dir . '/mailster-live.php', array( &$this, 'deactivate' ) );
 
 		load_plugin_textdomain( 'mailster-live' );
 
@@ -48,7 +48,7 @@ class MailsterLive {
 
 		if ( is_admin() ) {
 
-			if ( current_user_can( 'mailster-live' ) ) {
+			if ( current_user_can( 'mailster_live' ) ) {
 				add_action( 'load-newsletter_page_mailster_dashboard', array( &$this, 'register_meta_boxes' ) );
 				add_action( 'add_meta_boxes', array( &$this, 'add_meta_boxes' ) );
 				add_action( 'admin_enqueue_scripts', array( &$this, 'scripts' ) );
