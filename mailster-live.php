@@ -3,7 +3,7 @@
 Plugin Name: Mailster Live!
 Plugin URI: https://mailster.co/?utm_campaign=wporg&utm_source=Mailster+Live
 Description: see who opens your newsletter campaigns in real time
-Version: 1.0
+Version: 1.0.1
 Author: EverPress
 Author URI: https://everpress.io
 Text Domain: mailster-live
@@ -12,7 +12,7 @@ License: GPLv2 or later
 
 class MailsterLive {
 
-	private $version = '1.0';
+	private $version = '1.0.1';
 	private $plugin_dir;
 	private $plugin_url;
 	private $offset = 0;
@@ -235,7 +235,7 @@ class MailsterLive {
 			return;
 		}
 
-		add_meta_box( 'mailster_live', 'Live!', array( &$this, 'metabox' ), 'newsletter', 'normal', 'high' );
+		add_meta_box( 'mailster_live', __( 'Live!', 'mailster-live' ), array( &$this, 'metabox' ), 'newsletter', 'normal', 'high' );
 	}
 
 
@@ -400,7 +400,7 @@ class MailsterLive {
 
 
 	public function notice() {
-		$msg = sprintf( __( 'You have to enable the %s to use Mailster Live!', 'mailster-live' ), '<a href="http://rxa.li/mailster?utm_campaign=plugin&utm_medium=link&utm_source=Mailster+Live!">Mailster Newsletter Plugin</a>' );
+		$msg = sprintf( __( 'You have to enable the %s to use Mailster Live!', 'mailster-live' ), '<a href="https://rxa.li/mailster?utm_campaign=plugin&utm_medium=link&utm_source=Mailster+Live!">Mailster Newsletter Plugin</a>' );
 ?>
 		<div class="error"><p><strong><?php echo $msg; ?></strong></p></div>
 	<?php

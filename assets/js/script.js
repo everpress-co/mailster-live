@@ -61,15 +61,6 @@ jQuery(document).ready(function ($) {
 
 		map = new google.maps.Map(_mapcanvas[0], mapOptions);
 
-		// map.mapTypes.set("osm", new google.maps.ImageMapType({
-		// 	getTileUrl: function(coord, zoom) {
-		// 		return "//tile.openstreetmap.org/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
-		// 	},
-		// 	tileSize: new google.maps.Size(256, 256),
-		// 	name: "OSM",
-		// 	maxZoom: 18
-		// }));
-
 		google.maps.event.addListener(map, 'click', function () {
 			removeInfowindow();
 		});
