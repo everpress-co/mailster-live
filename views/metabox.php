@@ -1,6 +1,7 @@
 <?php
 $classes = array( 'mailster_live_wrap' );
-if ( is_mailster_dashboard() ) {
+$screen = get_current_screen();
+if ( 'newsletter_page_mailster_dashboard' == $screen->base ) {
 	$classes[] = 'is-dashboard';
 	$classes[] = 'expanded';
 }
@@ -11,7 +12,7 @@ if ( is_mailster_dashboard() ) {
 	<?php else : ?>
 
 	<span class="mailster_live_paused"><?php esc_html_e( 'paused', 'mailster-live' ); ?></span>
-	<a href="" class="mailster_toggle_fullscreen" title="<?php esc_html_e( 'toggle fullscreen', 'mailster-live' ); ?>"></a>
+	<a href="#" class="mailster-icon mailster_toggle_fullscreen" title="<?php esc_html_e( 'toggle fullscreen', 'mailster-live' ); ?>"></a>
 	<span class="mailster_live_collapse" >
 		<a href="#" class="mailster_live_collapse-button button-secondary mailster-icon" title="<?php esc_html_e( 'Collapse Sidebar', 'mailster-live' ); ?>"></a>
 		<span class="mailster_live_collapse-label"><?php esc_html_e( 'Collapse', 'mailster-live' ); ?></span>

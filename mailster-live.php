@@ -3,7 +3,7 @@
 Plugin Name: Mailster Live!
 Plugin URI: https://mailster.co/?utm_campaign=wporg&utm_source=Mailster+Live
 Description: see who opens your newsletter campaigns in real time
-Version: 1.0.1
+Version: 1.0.2
 Author: EverPress
 Author URI: https://everpress.io
 Text Domain: mailster-live
@@ -12,7 +12,7 @@ License: GPLv2 or later
 
 class MailsterLive {
 
-	private $version = '1.0.1';
+	private $version = '1.0.2';
 	private $plugin_dir;
 	private $plugin_url;
 	private $offset = 0;

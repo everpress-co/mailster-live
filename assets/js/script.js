@@ -33,12 +33,12 @@ jQuery(document).ready(function ($) {
 
 	function _init() {
 
+		if(!_mapcanvas.length) return;
+
 		var mapTypeIds = [];
 		for(var type in google.maps.MapTypeId) {
 			mapTypeIds.push(google.maps.MapTypeId[type]);
 		}
-		mapTypeIds.push("osm");
-
 
 		var mapOptions = {
 			center: mapcenter,
@@ -51,6 +51,7 @@ jQuery(document).ready(function ($) {
 			zoomControl: true,
 			scaleControl: true,
 			streetViewControl: false,
+			fullscreenControl: false,
 			mapTypeControl: true,
 			mapTypeControlOptions: {
 				style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,

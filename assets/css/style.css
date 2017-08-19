@@ -91,7 +91,7 @@ body.mailster-oveflow-hidden{
 	bottom: 12px;
 	right: 20px;
 	color: #aaa;
-	z-index: 2;
+	z-index: 3;
 }
  .expanded .mailster_live_collapse{
 	right: 43px;
@@ -105,14 +105,15 @@ body.mailster-oveflow-hidden{
 	height: 28px;
 	display: inline-block;
 }
-.mailster-dashboard .mailster-icon.mailster_live_collapse-button:before{
+.mailster-icon.mailster_live_collapse-button:before{
 	 content: '\e808';
 	 margin-left: -2px;
+	 margin-top: 15px;
 	 font-size: 11px;
 	 float: none;
 	 transform: translateY(-6px);
 }
-.mailster-dashboard .expanded .mailster-icon.mailster_live_collapse-button:before{
+.expanded .mailster-icon.mailster_live_collapse-button:before{
 	 margin-left: -3px;
 	 content: '\e807';
 }
@@ -127,19 +128,16 @@ body.mailster-oveflow-hidden{
 	right: 7px;
 	z-index: 1;
 	top: 5px;
-	font-size: 10px;
 	text-decoration: none;
-	background-image: url(/wp-includes/images/wpicons.png);
-	background-position: -239px -20px;
 	width: 22px;
 	height: 20px;
 	display: none;
 }
+.mailster_toggle_fullscreen:before{
+	 content: '\e82b';
+}
 #mailster_live:hover .mailster_toggle_fullscreen, .touch #mailster_live .mailster_toggle_fullscreen{
 	display: block;
-}
-.mailster_toggle_fullscreen:hover{
-	background-position: -239px 0;
 }
 .mailster_live_map_wrap{
 	height:100%;
@@ -149,7 +147,8 @@ body.mailster-oveflow-hidden{
 	margin-right: 300px;
 	left: 0;
 	background-color: #F2F2F2;
-	z-index: 1;
+	z-index: 2;
+	overflow: hidden;
 
 }
 .mailster_live_wrap.expanded .mailster_live_map_wrap{
@@ -476,7 +475,6 @@ body.mailster-oveflow-hidden{
 
 .mailster_live_info{
 	position: relative;
-	z-index: 2;
 	width: 260px;
 	padding: 260px 14px 0 26px;
 	display: none;
@@ -485,6 +483,7 @@ body.mailster-oveflow-hidden{
 
 .noaction .mailster_live_info{
 	display: block;
+	z-index: 1;
 }
 .mailster_live_info.loggedout{
 	display: block;
@@ -504,21 +503,10 @@ body.mailster-oveflow-hidden{
 }
 .mailster_live_no_api_key{
 	font-size: 20px;
-	text-align: center;
-	margin: 0 auto;
-	padding-top: 33%;
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-	only screen and (-o-min-device-pixel-ratio: 32),
-	only screen and (min--moz-device-pixel-ratio: 1.5),
-	only screen and (min-device-pixel-ratio: 1.5) {
-
-	.mailster_toggle_fullscreen{
-		background-image: url(/wp-includes/images/wpicons-2x.png);
-		background-size: 560px 40px;
-	}
-
-
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 
