@@ -34,7 +34,7 @@ if ( 'newsletter_page_mailster_dashboard' == $screen->base ) {
 			<div class="mailster_live_userdetail">
 				<header>
 					<a class="mailster_live_back">&larr; <?php esc_html_e( 'back', 'mailster-live' ); ?></a>
-					<a href="#" title="<?php _e( 'visit profile', 'mailster-live' ); ?>"><div class="mailster_live_avatar"></div></a>
+					<a href="#" title="<?php esc_html_e( 'visit profile', 'mailster-live' ); ?>"><div class="mailster_live_avatar"></div></a>
 					<h4 class="mailster_live_username"></h4>
 					<h5 class="mailster_live_email"></h5>
 				</header>
