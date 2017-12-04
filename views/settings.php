@@ -7,7 +7,7 @@
 	$maptype = mailster_option( 'live_maptype', 'roadmap' );
 
 	wp_enqueue_script( 'google-maps-api', $this->get_google_api_endpoint() );
-	wp_enqueue_script( 'mailster-live-settings', $this->plugin_url . '/assets/js/settings-script.js', array( 'jquery' ), $this->version );
+	wp_enqueue_script( 'mailster-live-settings', $this->plugin_url . '/assets/js/settings-script.js', array( 'jquery' ), MAILSTER_LIVE_VERSION );
 	wp_localize_script( 'mailster-live-settings', 'mailsterlive', array(
 		'zoom' => $mapoptions['zoom'],
 		'lat' => $mapoptions['lat'],

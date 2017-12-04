@@ -257,7 +257,7 @@ class MailsterLive {
 
 	public function settings() {
 
-		include $this->plugin_dir . '/views/metabox.php';
+		include $this->plugin_dir . '/views/settings.php';
 
 	}
 
