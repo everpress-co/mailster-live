@@ -1,8 +1,8 @@
 === Mailster Live! ===
-Contributors: everpress, revaxarts
+Contributors: everpress
 Tags: mailster, newsletter, email, tracking, analytics
 Requires at least: 3.8
-Tested up to: 5.0
+Tested up to: 5.2
 Stable tag: 1.2
 License: GPLv2 or later
 Author: EverPress

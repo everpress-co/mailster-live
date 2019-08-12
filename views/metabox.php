@@ -1,12 +1,12 @@
 <?php
 $classes = array( 'mailster_live_wrap' );
-$screen = get_current_screen();
+$screen  = get_current_screen();
 if ( 'newsletter_page_mailster_dashboard' == $screen->base ) {
 	$classes[] = 'is-dashboard';
 	$classes[] = 'expanded';
 }
 ?>
-<div class="<?php echo implode( ' ', $classes ) ?>" style="height:<?php echo mailster_option( 'live_height', 500 ) ?>px;">
+<div class="<?php echo implode( ' ', $classes ); ?>" style="height:<?php echo mailster_option( 'live_height', 500 ); ?>px;">
 	<?php if ( ! mailster_option( 'google_api_key' ) ) : ?>
 		<p class="mailster_live_no_api_key"><?php printf( esc_html__( 'Please define a valid Google API Key on the %s', 'mailster-live' ), '<a href="edit.php?post_type=newsletter&page=mailster_settings#general">' . esc_attr__( 'Settings Page', 'mailster-live' ) . '</a>' ); ?></p>
 	<?php else : ?>

@@ -4,8 +4,8 @@ class MailsterLive {
 
 	private $plugin_dir;
 	private $plugin_url;
-	private $offset = 0;
-	private $maxlive = 1200;
+	private $offset    = 0;
+	private $maxlive   = 1200;
 	private $ajaxpause = 3000;
 
 	public function __construct() {
@@ -96,7 +96,7 @@ class MailsterLive {
 
 	public function ajax_check() {
 
-		$return['success'] = false;
+		$return['success']  = false;
 		$return['loggedin'] = is_user_logged_in();
 
 		if ( ! $return['loggedin'] ) {
@@ -105,9 +105,9 @@ class MailsterLive {
 
 		$this->ajax_nonce( json_encode( $return ) );
 
-		$user_id = isset( $_POST['user_id'] ) ? intval( $_POST['user_id'] ) : null;
+		$user_id     = isset( $_POST['user_id'] ) ? intval( $_POST['user_id'] ) : null;
 		$campaign_id = isset( $_POST['campaign_id'] ) ? intval( $_POST['campaign_id'] ) : null;
-		$timestamp = isset( $_POST['timestamp'] ) ? intval( $_POST['timestamp'] ) : time();
+		$timestamp   = isset( $_POST['timestamp'] ) ? intval( $_POST['timestamp'] ) : time();
 
 		// get the latest 2 minutes if the first visit
 		if ( ! $timestamp ) {
@@ -115,12 +115,12 @@ class MailsterLive {
 		}
 
 		$return['success'] = true;
-		$return['pause'] = $this->ajaxpause;
+		$return['pause']   = $this->ajaxpause;
 
-		$return['actions'] = $this->get( $timestamp, $user_id, $campaign_id );
-		$return['count'] = count( $return['actions'] );
+		$return['actions']   = $this->get( $timestamp, $user_id, $campaign_id );
+		$return['count']     = count( $return['actions'] );
 		$return['timestamp'] = time();
-		$return['maxlive'] = $this->maxlive;
+		$return['maxlive']   = $this->maxlive;
 
 		@header( 'Content-type: application/json' );
 		echo json_encode( $return );
@@ -179,35 +179,42 @@ class MailsterLive {
 		wp_enqueue_script( 'google-maps-api', $this->get_google_api_endpoint() );
 		wp_enqueue_script( 'mailster-live', $this->plugin_url . '/assets/js/script.js', array( 'jquery' ), MAILSTER_LIVE_VERSION );
 		wp_enqueue_style( 'mailster-live', $this->plugin_url . '/assets/css/style.css', array(), MAILSTER_LIVE_VERSION );
-		wp_localize_script( 'mailster-live', 'mailsterlive', array(
-				'url' => $this->plugin_url,
-				'maxlive' => $this->maxlive,
+		wp_localize_script(
+			'mailster-live',
+			'mailsterlive',
+			array(
+				'url'         => $this->plugin_url,
+				'maxlive'     => $this->maxlive,
 				'pauseonblur' => mailster_option( 'live_pauseonblur' ),
-				'maptype' => mailster_option( 'live_maptype', 'roadmap' ),
-				'markers' => array(
-					'open' => $this->plugin_url . '/assets/img/green.png',
-					'click' => $this->plugin_url . '/assets/img/blue.png',
-					'unsubscribe' => $this->plugin_url . '/assets/img/red.png',
-					'other' => $this->plugin_url . '/assets/img/yellow.png',
-					'open_2x' => $this->plugin_url . '/assets/img/green_2x.png',
-					'click_2x' => $this->plugin_url . '/assets/img/blue_2x.png',
+				'maptype'     => mailster_option( 'live_maptype', 'roadmap' ),
+				'markers'     => array(
+					'open'           => $this->plugin_url . '/assets/img/green.png',
+					'click'          => $this->plugin_url . '/assets/img/blue.png',
+					'unsubscribe'    => $this->plugin_url . '/assets/img/red.png',
+					'other'          => $this->plugin_url . '/assets/img/yellow.png',
+					'open_2x'        => $this->plugin_url . '/assets/img/green_2x.png',
+					'click_2x'       => $this->plugin_url . '/assets/img/blue_2x.png',
 					'unsubscribe_2x' => $this->plugin_url . '/assets/img/red_2x.png',
-					'other_2x' => $this->plugin_url . '/assets/img/yellow_2x.png',
+					'other_2x'       => $this->plugin_url . '/assets/img/yellow_2x.png',
 				),
-				'mapoptions' => mailster_option( 'live_map', array(
+				'mapoptions'  => mailster_option(
+					'live_map',
+					array(
 						'zoom' => 2,
-						'lat' => 47.059745395225704,
-						'lng' => 7.464083442187537,
-				) ),
-				'secago' => __( '%s sec ago', 'mailster-live' ),
-				'minago' => __( '%s min ago', 'mailster-live' ),
-				'hourago' => __( '%s hours ago', 'mailster-live' ),
-				'messages' => array(
+						'lat'  => 47.059745395225704,
+						'lng'  => 7.464083442187537,
+					)
+				),
+				'secago'      => __( '%s sec ago', 'mailster-live' ),
+				'minago'      => __( '%s min ago', 'mailster-live' ),
+				'hourago'     => __( '%s hours ago', 'mailster-live' ),
+				'messages'    => array(
 					'2' => __( 'opened the newsletter', 'mailster-live' ),
 					'3' => __( 'clicked a link', 'mailster-live' ),
 					'4' => _x( 'unsubscribed', 'the verb', 'mailster-live' ),
 				),
-		) );
+			)
+		);
 
 	}
 
@@ -245,9 +252,12 @@ class MailsterLive {
 		$endpoint = 'https://maps.googleapis.com/maps/api/js';
 
 		if ( $key = mailster_option( 'google_api_key' ) ) {
-			$endpoint = add_query_arg( array(
+			$endpoint = add_query_arg(
+				array(
 					'key' => $key,
-			), $endpoint );
+				),
+				$endpoint
+			);
 		}
 
 		return $endpoint;
@@ -280,7 +290,7 @@ class MailsterLive {
 			$timestamp = time() - $this->maxlive;
 		}
 
-		$campaign_ids = is_array( $campaign_id ) ? $campaign_id : ( is_numeric( $campaign_id ) ? array( $campaign_id ) : null );
+		$campaign_ids   = is_array( $campaign_id ) ? $campaign_id : ( is_numeric( $campaign_id ) ? array( $campaign_id ) : null );
 		$subscriber_ids = is_array( $subscriber_id ) ? $subscriber_id : ( is_numeric( $subscriber_id ) ? array( $subscriber_id ) : null );
 
 		$sql = "SELECT a.type,a.subscriber_id AS subscriber_id,s.email AS email, a.campaign_id AS campaign_id,a.timestamp AS timestamp,geo.meta_value AS geo,coords.meta_value AS coords,l.link, TRIM(CONCAT(IFNULL(firstname.meta_value, ''), ' ', IFNULL(lastname.meta_value, ''))) as name FROM {$wpdb->prefix}mailster_actions AS a LEFT JOIN {$wpdb->prefix}mailster_subscribers AS s ON s.ID = a.subscriber_id LEFT JOIN {$wpdb->prefix}mailster_subscriber_fields AS firstname ON firstname.subscriber_id = a.subscriber_id AND firstname.meta_key = 'firstname' LEFT JOIN {$wpdb->prefix}mailster_subscriber_fields AS lastname ON lastname.subscriber_id = a.subscriber_id AND lastname.meta_key = 'lastname' LEFT JOIN {$wpdb->prefix}mailster_links AS l ON l.ID = a.link_id";
@@ -309,15 +319,15 @@ class MailsterLive {
 
 		$actions = $wpdb->get_results( $wpdb->prepare( $sql, $timestamp ) );
 
-		$count = 0;
+		$count  = 0;
 		$return = array();
 
 		foreach ( $actions as $action ) {
 
-			$action->hash = md5( serialize( $action ) );
-			$action->gravatar = mailster( 'subscribers' )->get_gravatar_uri( $action->email, 120 );
-			$action->coords = $action->coords ? explode( ',', $action->coords ) : null;
-			$action->geo = $action->geo ? explode( '|', $action->geo ) : null;
+			$action->hash         = md5( serialize( $action ) );
+			$action->gravatar     = mailster( 'subscribers' )->get_gravatar_uri( $action->email, 120 );
+			$action->coords       = $action->coords ? explode( ',', $action->coords ) : null;
+			$action->geo          = $action->geo ? explode( '|', $action->geo ) : null;
 			$action->formatedtime = date( $timeformat, $action->timestamp + $timeoffset );
 			if ( empty( $action->name ) ) {
 				$action->name = $action->email;
@@ -349,9 +359,9 @@ class MailsterLive {
 
 	public function notice() {
 		$msg = sprintf( esc_html__( 'You have to enable the %s to use Mailster Live!', 'mailster-live' ), '<a href="https://rxa.li/mailster?utm_campaign=plugin&utm_medium=link&utm_source=Mailster+Live!">Mailster Newsletter Plugin</a>' );
-?>
+		?>
 		<div class="error"><p><strong><?php echo $msg; ?></strong></p></div>
-	<?php
+		<?php
 
 	}
 
