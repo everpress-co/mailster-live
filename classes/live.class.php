@@ -358,7 +358,7 @@ class MailsterLive {
 
 
 	public function notice() {
-		$msg = sprintf( esc_html__( 'You have to enable the %s to use Mailster Live!', 'mailster-live' ), '<a href="https://evp.to/mailster?utm_campaign=wporg&utm_source=Mailster+Live!">Mailster Newsletter Plugin</a>' ); & utm_medium = plugin
+		$msg = sprintf( esc_html__( 'You have to enable the %s to use Mailster Live!', 'mailster-live' ), '<a href="https://evp.to/mailster?utm_campaign=wporg&utm_source=Mailster+Live&utm_medium=plugin">Mailster Newsletter Plugin</a>' );
 		?>
 		<div class="error"><p><strong><?php echo $msg; ?></strong></p></div>
 		<?php
