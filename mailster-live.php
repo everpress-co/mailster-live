@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Mailster Live!
-Plugin URI: https://mailster.co/?utm_campaign=wporg&utm_source=Mailster+Live
+Plugin URI: https://mailster.co/?utm_campaign=wporg&utm_source=Mailster+Live&utm_medium=plugin
 Description: see who opens your newsletter campaigns in real time
 Version: 1.2
 Author: EverPress

@@ -2,7 +2,7 @@
 Contributors: everpress
 Tags: mailster, newsletter, email, tracking, analytics
 Requires at least: 3.8
-Tested up to: 5.2
+Tested up to: 5.3
 Stable tag: 1.2
 License: GPLv2 or later
 Author: EverPress
@@ -10,7 +10,9 @@ Author URI: https://mailster.co
 
 == Description ==
 
-= see who opens your newsletter campaigns in real time =
+See who opens your newsletter campaigns in real time.
+
+> This Plugin requires [Mailster Newsletter Plugin for WordPress](https://mailster.co/?utm_campaign=wporg&utm_source=Mailster+Live&utm_medium=readme)
 
 == Changelog ==
 
