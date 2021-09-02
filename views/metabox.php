@@ -12,10 +12,9 @@ if ( 'newsletter_page_mailster_dashboard' == $screen->base ) {
 	<?php else : ?>
 
 	<span class="mailster_live_paused"><?php esc_html_e( 'paused', 'mailster-live' ); ?></span>
-	<a href="#" class="mailster-icon mailster_toggle_fullscreen" title="<?php esc_html_e( 'toggle fullscreen', 'mailster-live' ); ?>"></a>
+	<a href="#" class="mailster-icon mailster_toggle_fullscreen" title="<?php esc_attr_e( 'toggle fullscreen', 'mailster-live' ); ?>"></a>
 	<span class="mailster_live_collapse" >
-		<a href="#" class="mailster_live_collapse-button button-secondary mailster-icon" title="<?php esc_html_e( 'Collapse Sidebar', 'mailster-live' ); ?>"></a>
-		<span class="mailster_live_collapse-label"><?php esc_html_e( 'Collapse', 'mailster-live' ); ?></span>
+		<a href="#" class="mailster_live_collapse-button mailster-icon" title="<?php esc_attr_e( 'Collapse Sidebar', 'mailster-live' ); ?>"></a>
 	</span>
 	<div class="mailster_live_map_wrap">
 		<div class="mailster_live_map"></div>
@@ -34,7 +33,7 @@ if ( 'newsletter_page_mailster_dashboard' == $screen->base ) {
 			<div class="mailster_live_userdetail">
 				<header>
 					<a class="mailster_live_back">&larr; <?php esc_html_e( 'back', 'mailster-live' ); ?></a>
-					<a href="#" title="<?php esc_html_e( 'visit profile', 'mailster-live' ); ?>"><div class="mailster_live_avatar"></div></a>
+					<a href="#" title="<?php esc_attr_e( 'visit profile', 'mailster-live' ); ?>"><div class="mailster_live_avatar"></div></a>
 					<h4 class="mailster_live_username"></h4>
 					<h5 class="mailster_live_email"></h5>
 				</header>

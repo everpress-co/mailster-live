@@ -39,7 +39,6 @@ body.mailster-oveflow-hidden{
 	color: #fff;
 	z-index: 10;
 	padding: 2px 5px;
-	font-size: 10px;
 	text-transform: uppercase;
 	display: none;
 }
@@ -58,8 +57,6 @@ body.mailster-oveflow-hidden{
 	height:60px;
 	border: 1px solid #aaa;
 	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
-	-webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 	padding: 2px;
 	background-color: #F8F8F8;
@@ -71,7 +68,6 @@ body.mailster-oveflow-hidden{
 .mailster_infowindow strong{
 	font-weight: normal;
 	text-transform: uppercase;
-	font-size: 10px;
 	padding-top: 4px;
 	display: block;
 	overflow: hidden;
@@ -98,30 +94,27 @@ body.mailster-oveflow-hidden{
 }
 .mailster_live_collapse-button.button-secondary{
 	position: relative;
-	-webkit-border-radius: 50%;
 	border-radius:50%;
 	vertical-align: middle;
 	width: 28px;
 	height: 28px;
 	display: inline-block;
 }
-.mailster-icon.mailster_live_collapse-button:before{
-	 content: '\e808';
-	 margin-left: -2px;
-	 margin-top: 15px;
-	 font-size: 11px;
-	 float: none;
-	 transform: translateY(-6px);
+.mailster_live_collapse-button{
+	margin-left: -2px;
+	margin-top: 15px;
+	float: none;
+	transform: translateY(-6px);
+	background-image: url('data:image/svg+xml;utf8,<svg version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g fill="none"><path d="M0 0h24v24h-24Z"></path><path stroke="%23545454" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 16l4-4 -4-4"></path></g></svg>') !important;
+	background-size: 24px 24px;
+	background-position: center;
 }
-.expanded .mailster-icon.mailster_live_collapse-button:before{
-	 margin-left: -3px;
-	 content: '\e807';
+.expanded .mailster_live_collapse-button{
+	margin-left: -3px;
+	background-image: url('data:image/svg+xml;utf8,<svg version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M14,8l-4,4l4,4" stroke-linecap="round" stroke-width="1.5" stroke="%23545454" fill="none" stroke-linejoin="round"></path><path fill="none" d="M0,0h24v24h-24Z"></path></svg>') !important;
 }
 .mailster_live_collapse-button.button-secondary:hover{
 	border-color: #aaa;
-}
-.mailster_live_collapse-label{
-	vertical-align: middle;
 }
 .mailster_toggle_fullscreen{
 	position: absolute;
@@ -133,8 +126,8 @@ body.mailster-oveflow-hidden{
 	height: 20px;
 	display: none;
 }
-.mailster_toggle_fullscreen:before{
-	 content: '\e82b';
+.mailster_toggle_fullscreen{
+	background-image: url('data:image/svg+xml;utf8,<svg version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke-linecap="round" stroke-width="1.5" stroke="%23545454" fill="none" stroke-linejoin="round"><path d="M19 21h-14c-1.105 0-2-.895-2-2v-14c0-1.105.895-2 2-2h14c1.105 0 2 .895 2 2v14c0 1.105-.895 2-2 2Z"></path><polyline points="14,6 18,6 18,10"></polyline><polyline points="10,18 6,18 6,14"></polyline></g><rect width="24" height="24" fill="none"></rect></svg>');
 }
 #mailster_live:hover .mailster_toggle_fullscreen, .touch #mailster_live .mailster_toggle_fullscreen{
 	display: block;
@@ -153,9 +146,6 @@ body.mailster-oveflow-hidden{
 }
 .mailster_live_wrap.expanded .mailster_live_map_wrap{
 	margin-right: 0px;
-}
-.mailster_live_wrap.expanded .mailster_live_collapse-label{
-	display: none;
 }
 .mailster_live_map{
 	padding-right: 300px;
@@ -196,7 +186,7 @@ body.mailster-oveflow-hidden{
 .mailster_live_activity.active-opens ul.mailster_live_activities li{
 	display:none !important;
 }
-.mailster_live_activity.active-opens ul.mailster_live_activities li.mailster_live_type_2{
+.mailster_live_activity.active-opens ul.mailster_live_activities li.mailster_live_type_open{
 	display:inherit !important;
 }
 
@@ -209,7 +199,7 @@ body.mailster-oveflow-hidden{
 .mailster_live_activity.active-clicks ul.mailster_live_activities li{
 	display:none !important;
 }
-.mailster_live_activity.active-clicks ul.mailster_live_activities li.mailster_live_type_3{
+.mailster_live_activity.active-clicks ul.mailster_live_activities li.mailster_live_type_click{
 	display:inherit !important;
 }
 
@@ -222,7 +212,7 @@ body.mailster-oveflow-hidden{
 .mailster_live_activity.active-unsubscribes ul.mailster_live_activities li{
 	display:none !important;
 }
-.mailster_live_activity.active-unsubscribes ul.mailster_live_activities li.mailster_live_type_4{
+.mailster_live_activity.active-unsubscribes ul.mailster_live_activities li.mailster_live_type_unsub{
 	display:inherit !important;
 }
 
@@ -238,7 +228,6 @@ body.mailster-oveflow-hidden{
 .mailster_live_activity.active-others ul.mailster_live_activities li.mailster_live_type_other{
 	display:inherit !important;
 }
-
 .mailster_live_totals{
 	overflow: hidden;
 	clear: both;
@@ -249,12 +238,11 @@ body.mailster-oveflow-hidden{
 .mailster_live_totals div{
 	float: left;
 	width: 23%;
-	height: 61px;
+	height: 81px;
 	margin-left: 1%;
 	border-bottom: 2px solid #D3D6DB;
 	text-align: right;
 	padding: 3px;
-	font-size: 10px;
 	color: #aaa;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -279,9 +267,12 @@ body.mailster-oveflow-hidden{
 }
 .mailster_live_totals div span{
 	color: #333;
-	font-size: 22px;
+	font-size: 28px;
 	display: block;
-	padding-top: 21px;
+	line-height: 1em;
+	padding-top: 20px;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 .mailster_live_totals div.mailster_live_total_opens{
 	border-bottom-color: #6ED421;
@@ -304,31 +295,17 @@ body.mailster-oveflow-hidden{
 	border-top: 1px solid #D3D6DB;
 	border-bottom: 1px solid #D3D6DB;
 	background: #F9F9F9;
-	bottom: 50px;
+	bottom: 42px;
 	position: absolute;
-	top: 80px;
+	top: 100px;
 	padding:0;
 }
-.mailster_live_activity.noaction ul:before{
-	content: '\f328';
-	font: normal 120px/1 'dashicons';
-	text-align: center;
-	margin: 0 auto;
-	display: block;
-	color:#999;
-	margin-top:30%;
-}
-
 .mailster_live_activity li{
 	overflow: hidden;
 	position: relative;
 	padding: 5px 5px 0;
 	display: block;
 	cursor: pointer;
-	-webkit-transition:border-left-width .25s ease,border .25s ease,padding-right .25s ease;
-	-moz-transition:border-left-width .25s ease,border .25s ease,padding-right .25s ease;
-	-ms-transition:border-left-width .25s ease,border .25s ease,padding-right .25s ease;
-	-o-transition:border-left-width .25s ease,border .25s ease,padding-right .25s ease;
 	transition:border-left-width .25s ease,border .25s ease,padding-right .25s ease;
 	margin: 2px 3px;
 	border: 1px solid #F1F1F1;
@@ -343,13 +320,13 @@ body.mailster-oveflow-hidden{
 .mailster_live_activity .mailster_live_activities li:hover {
 	background-color: #F1F1F1;
 }
-.mailster_live_activity li.mailster_live_type_2{
+.mailster_live_activity li.mailster_live_type_open{
 	border-left-color: #6ED421;
 }
-.mailster_live_activity li.mailster_live_type_3{
+.mailster_live_activity li.mailster_live_type_click{
 	border-left-color: #2189D4;
 }
-.mailster_live_activity li.mailster_live_type_4{
+.mailster_live_activity li.mailster_live_type_unsub{
 	border-left-color: #D54E21;
 }
 .mailster_live_activity li.mailster_live_type_other{
@@ -363,7 +340,6 @@ body.mailster-oveflow-hidden{
 	font-size: 14px;
 	text-overflow: ellipsis;
 	overflow: hidden;
-	font-weight: 300;
 	margin: 0;
 	height: 17px;
 	width: 72%;
@@ -374,8 +350,6 @@ body.mailster-oveflow-hidden{
 	float: left;
 	margin-right: 10px;
 	margin-top: 1px;
-	padding: 2px;
-	border: 1px solid #D3D6DB;
 	background-color: #FFF;
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -393,10 +367,6 @@ body.mailster-oveflow-hidden{
 .mailster_live_activity .mailster_live_userdetail li{
 	cursor: auto;
 }
-.mailster_live_activity .mailster_live_userdetail li:hover {
-	padding-right: 5px;
-	border-left-width: 4px;
-}
 .mailster_live_activity .mailster_live_userdetail li .mailster_live_avatar{
 	display: none;
 }
@@ -407,12 +377,8 @@ body.mailster-oveflow-hidden{
 	padding-top: 2px;
 }
 .mailster_live_activity li .mailster_live_name{
-	font-weight: 100;
-	font-size: 11px;
 }
 .mailster_live_activity li .mailster_live_timestamp{
-	font-weight: 100;
-	font-size: 11px;
 	color: #aaa;
 	float: right;
 }
@@ -421,7 +387,6 @@ body.mailster-oveflow-hidden{
 .mailster_live_activity li .mailster_live_action_body{
 	color: #888;
 	display: none;
-	font-weight: 100;
 }
 .mailster_live_activity .mailster_live_userdetail li .mailster_live_action_body{
 	padding-left: 0;
@@ -440,6 +405,7 @@ body.mailster-oveflow-hidden{
 }
 .mailster_live_activity .mailster_live_userdetail header{
 	padding: 10px 4px;
+	margin-top: -20px;
 }
 .mailster_live_activity .mailster_live_userdetail ul{
 	top:110px;
@@ -458,20 +424,12 @@ body.mailster-oveflow-hidden{
 }
 .mailster_live_activity .mailster_live_userdetail h5.mailster_live_email{
 	font-weight: 100;
-	font-size: 11px;
 	margin: 0;
 	padding-bottom: 12px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
 }
-.mailster_live_activity .mailster_live_userdetail .mailster_live_avatar:hover{
-	border: 1px solid #B1B4B9;
-	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
-	-webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
 
 .mailster_live_info{
 	position: relative;

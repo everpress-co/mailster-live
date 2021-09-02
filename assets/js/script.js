@@ -26,15 +26,15 @@ jQuery(document).ready(function ($) {
 		lastzoom = parseInt(mailsterlive.mapoptions.zoom, 10),
 		maxLive = parseInt(mailsterlive.maxlive, 10),
 		counts = {
-			2: 0,
-			3: 0,
-			4: 0,
+			open: 0,
+			click: 0,
+			unsub: 0,
 			other: 0
 		},
 		$counts = {
-			2: $('.mailster_live_total_opens').find('span'),
-			3: $('.mailster_live_total_clicks').find('span'),
-			4: $('.mailster_live_total_unsubscribes').find('span'),
+			open: $('.mailster_live_total_opens').find('span'),
+			click: $('.mailster_live_total_clicks').find('span'),
+			unsub: $('.mailster_live_total_unsubscribes').find('span'),
 			other: $('.mailster_live_total_others').find('span')
 		},
 		icons = {};
@@ -86,9 +86,9 @@ jQuery(document).ready(function ($) {
 		var size = new google.maps.Size(16, 25);
 
 		icons = {
-			2: new google.maps.MarkerImage(mailsterlive.markers['open' + (hiDPI ? '_2x' : '')], null, null, null, size),
-			3: new google.maps.MarkerImage(mailsterlive.markers['click' + (hiDPI ? '_2x' : '')], null, null, null, size),
-			4: new google.maps.MarkerImage(mailsterlive.markers['unsubscribe' + (hiDPI ? '_2x' : '')], null, null, null, size),
+			open: new google.maps.MarkerImage(mailsterlive.markers['open' + (hiDPI ? '_2x' : '')], null, null, null, size),
+			click: new google.maps.MarkerImage(mailsterlive.markers['click' + (hiDPI ? '_2x' : '')], null, null, null, size),
+			unsub: new google.maps.MarkerImage(mailsterlive.markers['unsubscribe' + (hiDPI ? '_2x' : '')], null, null, null, size),
 			'other': new google.maps.MarkerImage(mailsterlive.markers['other' + (hiDPI ? '_2x' : '')], null, null, null, size)
 		};
 

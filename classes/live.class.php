@@ -122,9 +122,7 @@ class MailsterLive {
 		$return['timestamp'] = time();
 		$return['maxlive']   = $this->maxlive;
 
-		@header( 'Content-type: application/json' );
-		echo json_encode( $return );
-		exit;
+		wp_send_json( $return );
 	}
 
 
@@ -176,9 +174,11 @@ class MailsterLive {
 			return;
 		}
 
+		$suffix = SCRIPT_DEBUG ? '' : '.min';
+
 		wp_enqueue_script( 'google-maps-api', $this->get_google_api_endpoint() );
-		wp_enqueue_script( 'mailster-live', $this->plugin_url . '/assets/js/script.js', array( 'jquery' ), MAILSTER_LIVE_VERSION );
-		wp_enqueue_style( 'mailster-live', $this->plugin_url . '/assets/css/style.css', array(), MAILSTER_LIVE_VERSION );
+		wp_enqueue_script( 'mailster-live', $this->plugin_url . '/assets/js/script' . $suffix . '.js', array( 'jquery' ), MAILSTER_LIVE_VERSION );
+		wp_enqueue_style( 'mailster-live', $this->plugin_url . '/assets/css/style' . $suffix . '.css', array(), MAILSTER_LIVE_VERSION );
 		wp_localize_script(
 			'mailster-live',
 			'mailsterlive',
@@ -209,9 +209,9 @@ class MailsterLive {
 				'minago'      => __( '%s min ago', 'mailster-live' ),
 				'hourago'     => __( '%s hours ago', 'mailster-live' ),
 				'messages'    => array(
-					'2' => __( 'opened the newsletter', 'mailster-live' ),
-					'3' => __( 'clicked a link', 'mailster-live' ),
-					'4' => _x( 'unsubscribed', 'the verb', 'mailster-live' ),
+					'open'  => __( 'opened the newsletter', 'mailster-live' ),
+					'click' => __( 'clicked a link', 'mailster-live' ),
+					'unsub' => _x( 'unsubscribed', 'the verb', 'mailster-live' ),
 				),
 			)
 		);
@@ -282,55 +282,41 @@ class MailsterLive {
 	 */
 	private function get( $timestamp = '', $subscriber_id = null, $campaign_id = null ) {
 
-		global $wpdb;
+		$index = null;
+		$limit = 200;
+		$types = array( 'opens', 'clicks', 'unsubs' );
 
 		$timeformat = get_option( 'date_format' ) . ' ' . get_option( 'time_format' );
 		$timeoffset = get_option( 'gmt_offset' ) * 3600;
 		if ( empty( $timestamp ) ) {
 			$timestamp = time() - $this->maxlive;
 		}
+		$activities = mailster( 'actions' )->get_activity( $campaign_id, $subscriber_id, $index, $limit, $timestamp, $types );
 
-		$campaign_ids   = is_array( $campaign_id ) ? $campaign_id : ( is_numeric( $campaign_id ) ? array( $campaign_id ) : null );
-		$subscriber_ids = is_array( $subscriber_id ) ? $subscriber_id : ( is_numeric( $subscriber_id ) ? array( $subscriber_id ) : null );
+		$activities = array_reverse( $activities );
 
-		$sql = "SELECT a.type,a.subscriber_id AS subscriber_id,s.email AS email, a.campaign_id AS campaign_id,a.timestamp AS timestamp,geo.meta_value AS geo,coords.meta_value AS coords,l.link, TRIM(CONCAT(IFNULL(firstname.meta_value, ''), ' ', IFNULL(lastname.meta_value, ''))) as name FROM {$wpdb->prefix}mailster_actions AS a LEFT JOIN {$wpdb->prefix}mailster_subscribers AS s ON s.ID = a.subscriber_id LEFT JOIN {$wpdb->prefix}mailster_subscriber_fields AS firstname ON firstname.subscriber_id = a.subscriber_id AND firstname.meta_key = 'firstname' LEFT JOIN {$wpdb->prefix}mailster_subscriber_fields AS lastname ON lastname.subscriber_id = a.subscriber_id AND lastname.meta_key = 'lastname' LEFT JOIN {$wpdb->prefix}mailster_links AS l ON l.ID = a.link_id";
-
-		$sql .= " LEFT JOIN {$wpdb->prefix}mailster_subscriber_meta AS geo ON geo.subscriber_id = a.subscriber_id AND geo.meta_key = 'geo'";
-		if ( ! empty( $campaign_ids ) ) {
-			$sql .= ' AND geo.campaign_id IN (' . implode( ',', $campaign_ids ) . ')';
-		}
-
-		$sql .= " LEFT JOIN {$wpdb->prefix}mailster_subscriber_meta AS coords  ON coords.subscriber_id = a.subscriber_id AND coords.meta_key = 'coords'";
-		if ( ! empty( $campaign_ids ) ) {
-			$sql .= ' AND coords.campaign_id IN (' . implode( ',', $campaign_ids ) . ')';
-		}
-
-		$sql .= ' WHERE a.timestamp >= %d';
-
-		if ( ! empty( $campaign_ids ) ) {
-			$sql .= ' AND a.campaign_id IN (' . implode( ',', $campaign_ids ) . ')';
-		}
-
-		if ( ! empty( $subscriber_ids ) ) {
-			$sql .= ' AND a.subscriber_id IN (' . implode( ',', $subscriber_id ) . ')';
-		}
-
-		$sql .= ' AND a.type IN (2,3,4) GROUP BY a.type, a.subscriber_id, a.campaign_id, l.link ORDER BY a.timestamp ASC LIMIT 200';
-
-		$actions = $wpdb->get_results( $wpdb->prepare( $sql, $timestamp ) );
-
-		$count  = 0;
 		$return = array();
 
-		foreach ( $actions as $action ) {
+		foreach ( $activities as $activity ) {
 
-			$action->hash         = md5( serialize( $action ) );
-			$action->gravatar     = mailster( 'subscribers' )->get_gravatar_uri( $action->email, 120 );
-			$action->coords       = $action->coords ? explode( ',', $action->coords ) : null;
-			$action->geo          = $action->geo ? explode( '|', $action->geo ) : null;
-			$action->formatedtime = date( $timeformat, $action->timestamp + $timeoffset );
-			if ( empty( $action->name ) ) {
-				$action->name = $action->email;
+			$subscriber = mailster( 'subscribers' )->get( $activity->subscriber_id, true );
+			$action     = array();
+
+			$action['hash']     = md5( serialize( $activity ) );
+			$action['gravatar'] = mailster( 'subscribers' )->get_gravatar( $subscriber->ID, 120 );
+
+			$action['coords']        = explode( ',', mailster( 'subscribers' )->meta( $subscriber->ID, 'coords' ) );
+			$action['geo']           = explode( '|', mailster( 'subscribers' )->meta( $subscriber->ID, 'geo' ) );
+			$action['formatedtime']  = date( $timeformat, $activity->timestamp + $timeoffset );
+			$action['name']          = $subscriber->fullname;
+			$action['email']         = $subscriber->email;
+			$action['subscriber_id'] = $subscriber->ID;
+			$action['type']          = $activity->type;
+			$action['link']          = $activity->link;
+			$action['timestamp']     = $activity->timestamp;
+			// $action['time']          = $activity->time;
+			if ( empty( $action['name'] ) ) {
+				$action['name'] = $subscriber->email;
 			}
 
 			$return[] = $action;
