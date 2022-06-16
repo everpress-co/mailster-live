@@ -3,7 +3,7 @@
 Contributors: everpress  
 Tags: mailster, newsletter, email, tracking, analytics  
 Requires at least: 3.8  
-Tested up to: 5.9  
+Tested up to: 6.0  
 Stable tag: 2.0  
 License: GPLv2 or later
 
