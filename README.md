@@ -1,6 +1,6 @@
 # Mailster Live!
 
-Contributors: everpress  
+Contributors: everpress, xaverb  
 Tags: mailster, newsletter, email, tracking, analytics  
 Requires at least: 3.8  
 Tested up to: 6.0  
@@ -11,7 +11,7 @@ License: GPLv2 or later
 
 See who opens your newsletter campaigns in real time.
 
-> This Plugin requires [Mailster Newsletter Plugin for WordPress](https://mailster.co/?utm_campaign=wporg&utm_source=Mailster+Live&utm_medium=readme)
+> This Plugin requires [Mailster Newsletter Plugin for WordPress](https://mailster.co/?utm_campaign=wporg&utm_source=wordpress.org&utm_medium=readme&utm_term=Mailster+Live)
 
 ## Changelog
 
